@@ -73,7 +73,7 @@ UDP JSON → Unity VisionBridge        # 发送到 Unity
 | GPU | NVIDIA RTX 3060 8GB | **RTX 4080 Laptop 12GB** |
 | CPU | 8 核 | 24 核 |
 | RAM | 16 GB | 32 GB |
-| 摄像头 | USB 摄像头 | **Intel RealSense D435i** |
+| 摄像头 | USB 摄像头 | **Intel RealSense depth camera** |
 | IMU 串口 | USB-UART | **COM122 (460800 baud)** |
 
 ### 2.2 环境安装
@@ -106,7 +106,7 @@ pip install timm                      # ViT 骨干网络
 # 双击 Assets/Scenes/SampleScene.unity → Play
 
 # 终端 2: Python 视觉推理
-cd C:\Users\Administrator\Documents\Codex\2026-06-18\hamer-d435i-usb\work
+cd C:\Users\Administrator\Documents\Codex\2026-06-18\hamer-depth_camera-usb\work
 "D:\ProgramData\anaconda3\envs\hamer\python.exe" run_vitpose_v3.py
 
 # 终端 2: MediaPipe 备用方案
@@ -231,7 +231,7 @@ b3 = torch.cross(b1, b2, dim=-1)
 
 ### Issue 4: IMU 队列死锁导致视频卡死
 
-**问题现象**: 加入 IMU 串口数据后,视频同样在约 7 秒时卡死。纯视觉版本(d435i_hamer.py)无此问题。
+**问题现象**: 加入 IMU 串口数据后,视频同样在约 7 秒时卡死。纯视觉版本(depth_camera_hamer.py)无此问题。
 
 **根本原因**: IMU 采集线程以 200Hz 往 queue.Queue() 写入数据,而主线程以 15Hz 消费。队列未设 maxsize,导致 7 秒内堆积上千条数据。时间戳对齐逻辑 while camera_ts > imu_ts: imu_q.get() 在队列拥堵时陷入死循环,阻塞 GIL。
 
@@ -404,7 +404,7 @@ taskkill /F /PID <PID>
 - seq = 0 初始化行被错误匹配删除
 - 函数定义 orient_q_from_landmarks() 被错误的替换规则清空
 
-**解决方案**: 放弃增量修补,直接从已知稳定的 d435i_hamer_fusion.py 进行结构化重写。
+**解决方案**: 放弃增量修补,直接从已知稳定的 depth_camera_hamer_fusion.py 进行结构化重写。
 
 ---
 
@@ -446,7 +446,7 @@ Round 13-14: 状态机模型引入
 
 | 文件 | 路径 | 行数 | 作用 |
 |------|------|------|------|
-| un_vitpose_v3.py | work/ | 221 | 主推理脚本: D435i → ViTPose → HAMER → UDP |
+| un_vitpose_v3.py | work/ | 221 | 主推理脚本: depth camera → ViTPose → HAMER → UDP |
 | VisionBridge.cs | Assets/Scenes/ | 165 | Unity 视觉+IMU 桥梁 |
 | HandMotionManager.cs | Assets/Scenes/ | ~300 | IMU 手势解算与校准 |
 | FingerSolver.cs | Assets/Scenes/ | ~400 | 手指骨骼求解器 |
@@ -578,7 +578,7 @@ work/models/hand_landmarker.task
 | VisionBridge.cs | (见文件) | 165 行，含 num_hands 逻辑 |
 | wholebody.pth | - | 需自行下载校验 |
 
-### 5.5 RealSense D435i 硬件级依赖
+### 5.5 RealSense depth camera 硬件级依赖
 
 `pyrealsense2` 在 Windows 上需要底层 USB 驱动支持，仅 `pip install` 可能不够：
 
@@ -596,9 +596,9 @@ pip install pyrealsense2
 
 **验证方法**:
 ```powershell
-python -c "import pyrealsense2 as rs; pipe = rs.pipeline(); cfg = rs.config(); cfg.enable_stream(rs.stream.color, 640, 480, rs.format.bgr8, 30); pipe.start(cfg); print('D435i OK'); pipe.stop()"
+python -c "import pyrealsense2 as rs; pipe = rs.pipeline(); cfg = rs.config(); cfg.enable_stream(rs.stream.color, 640, 480, rs.format.bgr8, 30); pipe.start(cfg); print('depth camera OK'); pipe.stop()"
 ```
-正常输出: `D435i OK`
+正常输出: `depth camera OK`
 
 ### 5.6 串口 COM 号动态绑定
 

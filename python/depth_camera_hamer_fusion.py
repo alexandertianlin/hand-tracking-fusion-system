@@ -1,6 +1,6 @@
-"""D435i + ViTPose + HAMER + IMU - 非阻塞式数据画布融合
+"""depth camera + ViTPose + HAMER + IMU - 非阻塞式数据画布融合
 
-以 d435i_hamer_vitpose.py 为基底，零侵入式叠加 IMU 数据显示。
+以 depth_camera_hamer_vitpose.py 为基底，零侵入式叠加 IMU 数据显示。
 IMU 在独立后台线程更新全局变量，主线程仅做 cv2.putText 绘制，永不阻塞。
 """
 import os, time, cv2, numpy as np, torch, sys, pyrealsense2 as rs
@@ -128,19 +128,19 @@ args, _ = p.parse_known_args()
 t = threading.Thread(target=imu_listener_loop, args=(args.com, args.baud), daemon=True)
 t.start()
 
-# ========== 启动 D435i ==========
-print("Opening D435i ..."); sys.stdout.flush()
+# ========== 启动 depth camera ==========
+print("Opening depth camera ..."); sys.stdout.flush()
 pipe = rs.pipeline()
 config = rs.config()
 config.enable_stream(rs.stream.color, 640, 480, rs.format.bgr8, 30)
 profile = pipe.start(config)
 for _ in range(30): pipe.wait_for_frames()
-print("D435i OK. Press q/ESC to quit."); sys.stdout.flush()
+print("depth camera OK. Press q/ESC to quit."); sys.stdout.flush()
 
 fc = 0; ft = time.time(); fps = 0
 vit_skip = 0
 last_boxes = None; last_right = None
-out_dir = r"C:\Users\Administrator\Documents\Codex\2026-06-18\hamer-d435i-usb\outputs"
+out_dir = r"C:\Users\Administrator\Documents\Codex\2026-06-18\hamer-depth_camera-usb\outputs"
 os.makedirs(out_dir, exist_ok=True)
 
 # ========== 主循环 ==========
@@ -283,12 +283,12 @@ try:
         # ---- FPS 统计 + 显示 ----
         fc += 1
         if time.time()-ft >= 1: fps,fc,ft = fc,0,time.time()
-        cv2.putText(frame_view, f"D435i FPS:{fps}", (10,30), cv2.FONT_HERSHEY_SIMPLEX, .5, (0,200,0), 2)
+        cv2.putText(frame_view, f"depth camera FPS:{fps}", (10,30), cv2.FONT_HERSHEY_SIMPLEX, .5, (0,200,0), 2)
         cv2.imshow("HAMER + IMU (Non-blocking)", frame_view)
         k = cv2.waitKey(1)&0xFF
         if k in (ord("q"),27): break
         elif k == ord("s"):
-            sp = os.path.join(out_dir, f'd435i_{time.strftime("%H%M%S")}.jpg')
+            sp = os.path.join(out_dir, f'depth_camera_{time.strftime("%H%M%S")}.jpg')
             cv2.imwrite(sp, frame_view)
             print(f"Saved {sp}"); sys.stdout.flush()
 finally:

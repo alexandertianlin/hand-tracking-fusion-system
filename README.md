@@ -1,6 +1,6 @@
 # Hand Tracking Fusion System
 
-> **Real-time multi-modal 3D hand pose estimation** fusing Intel D435i camera (HaMeR/ViTPose) with wearable IMU+tactile glove, visualized in Unity.
+> **Real-time multi-modal 3D hand pose estimation** fusing Intel depth camera camera (HaMeR/ViTPose) with wearable IMU+tactile glove, visualized in Unity.
 
 [![System Demo](docs/images/system-demo-placeholder.png)](docs/architecture.md)
 
@@ -28,7 +28,7 @@ This system solves a fundamental problem in hand tracking: **IMU sensors drift o
 ## System Architecture
 
 ```
-D435i Camera ──→ ViTPose (hand detection) ──→ HaMeR (MANO 3D mesh)
+depth camera Camera ──→ ViTPose (hand detection) ──→ HaMeR (MANO 3D mesh)
                                                      │
                                                      │ global_orient quaternion + 21 keypoints + confidence
                                                      ▼
@@ -77,7 +77,7 @@ hand-tracking-fusion-system/
 ├── python/                      ← Python inference & fusion scripts
 │   ├── run_vitpose_v3.py        ← Main pipeline (ViTPose + HaMeR → UDP)
 │   ├── fusion_pipeline.py       ← IMU+Visual Slerp fusion (agiletact)
-│   ├── d435i_hamer_fusion.py    ← HaMeR + IMU local visualization
+│   ├── depth_camera_hamer_fusion.py    ← HaMeR + IMU local visualization
 │   ├── mediapipe_udp_sender.py  ← MediaPipe backup pipeline
 │   ├── realtime_vitpose_cuda.py ← ViTPose CUDA ONNX inference
 │   ├── run_hamer_camera.py      ← Standalone HaMeR inference
@@ -129,7 +129,7 @@ hand-tracking-fusion-system/
 | Component | Specification |
 |---|---|
 | GPU | NVIDIA 8GB+ VRAM (RTX 4080 Laptop 12GB / RTX 4060 Laptop 8GB validated) |
-| Camera | Intel RealSense D435i (640×480 @15 FPS) |
+| Camera | Intel RealSense depth camera (640×480 @15 FPS) |
 | Sensor glove | Custom STM32H523/H70B + 6× MPU6050 IMU + tactile/force sensors |
 | Software | Windows 10/11, CUDA 12.x, Python 3.10, Unity 2022.x |
 
@@ -152,7 +152,7 @@ pip install -r python/requirements.txt
 ### Running
 
 ```bash
-# Connect hardware: D435i (USB) + IMU glove (COM port)
+# Connect hardware: depth camera (USB) + IMU glove (COM port)
 
 # Option A: Full fusion pipeline (recommended)
 python python/fusion_pipeline.py
@@ -200,7 +200,7 @@ See [docs/fusion_algorithm.md](docs/fusion_algorithm.md) for complete mathematic
 - **Firmware source**: See [firmware/](firmware/) directory
 
 ### Vision Pipeline
-- **Camera**: Intel RealSense D435i (RGB 640×480 @15 FPS)
+- **Camera**: Intel RealSense depth camera (RGB 640×480 @15 FPS)
 - **Detection**: ViTPose+ Huge (whole-body, runs every 6 frames for efficiency)
 - **Mesh recovery**: HaMeR (MANO parametric hand model, per-frame inference)
 - **Latency**: ViTPose ~112ms (every 6 frames) + HaMeR ~50ms = ~135ms total

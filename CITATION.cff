@@ -9,7 +9,7 @@ version: 1.0.0
 date-released: 2026-07-14
 repository-code: https://github.com/alexandertianlin/hand-tracking-fusion-system
 license: MIT
-abstract: "Real-time multi-modal 3D hand pose estimation fusing Intel D435i camera (HaMeR/ViTPose) with wearable IMU+tactile glove for drift-free, occlusion-robust tracking with per-finger granularity."
+abstract: "Real-time multi-modal 3D hand pose estimation fusing Intel depth camera camera (HaMeR/ViTPose) with wearable IMU+tactile glove for drift-free, occlusion-robust tracking with per-finger granularity."
 keywords:
   - hand-tracking
   - multi-modal-fusion

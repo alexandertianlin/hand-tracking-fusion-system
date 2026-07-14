@@ -28,7 +28,7 @@ $$Q_{\text{imu,aligned}} = Q_{\text{imu}} \cdot Q_{\text{offset}}$$
 
 ### Calibration Protocol
 
-1. User places hand flat, palm facing D435i camera
+1. User places hand flat, palm facing depth camera camera
 2. System collects **15 frames** of simultaneous IMU + HaMeR data
 3. Compute $Q_{\text{offset}}$ per finger from averaged quaternions
 4. Store offset in calibration database
@@ -137,7 +137,7 @@ This prevents sudden orientation jumps when vision reappears.
 ## 7. Data Flow Summary
 
 ```
-D435i (640×480 @15fps) ──→ ViTPose (every 6 frames) ──→ bbox tracking
+depth camera (640×480 @15fps) ──→ ViTPose (every 6 frames) ──→ bbox tracking
                                                               │
                                                               ▼
                                                          HaMeR (MANO)

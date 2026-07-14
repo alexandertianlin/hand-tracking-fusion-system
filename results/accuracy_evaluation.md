@@ -2,7 +2,7 @@
 
 **Date:** 2026-07-14  
 **Session:** `session_v920b_20260707_184103` (435 frames)  
-**Model:** HaMeR + ViTPose (hrnet_w48_dark) + RealSense D435i  
+**Model:** HaMeR + ViTPose (hrnet_w48_dark) + RealSense depth camera  
 **Evaluator:** Self-consistency audit (no ground-truth 3D labels)
 
 ---
@@ -212,7 +212,7 @@ Expected setup time: 1–2 days. Expected result: competitive MPJPE <10mm (HaMeR
 
 **Option B: Custom Ground Truth Collection**
 
-1. Record synchronized D435i + marker-based motion capture session
+1. Record synchronized depth camera + marker-based motion capture session
 2. Annotate 3D joint positions from mocap data
 3. Align mocap and camera coordinate systems
 4. Compute MPJPE on custom dataset
@@ -221,9 +221,9 @@ Expected setup time: 2–3 weeks (requires mocap lab access).
 
 **Option C: Proxy Metric (Immediate)**
 
-Convert 2D tip error from pixels to mm using D435i depth data:
+Convert 2D tip error from pixels to mm using depth camera depth data:
 - `error_mm = tip_error_px × depth_mm / focal_length_px`
-- D435i focal length ≈ 616 px (at 640×480)
+- depth camera focal length ≈ 616 px (at 640×480)
 
 This provides an approximate 2D→3D error proxy without ground truth.
 
@@ -234,7 +234,7 @@ This provides an approximate 2D→3D error proxy without ground truth.
 ### 7.1 Immediate Actions
 
 1. **Fix BBOX_CROP_TRUNCATES_TIPS** (65.7% of frames): Increase bbox padding/margin to ensure fingertip keypoints are always within the crop. This alone could dramatically improve tip error.
-2. **Implement Option C (depth-based proxy)**: Use D435i depth map to convert pixel errors to mm, providing a rough MPJPE estimate.
+2. **Implement Option C (depth-based proxy)**: Use depth camera depth map to convert pixel errors to mm, providing a rough MPJPE estimate.
 3. **Increase ViTPose keypoint threshold**: Consider kpt_thr=0.3 (current best) vs 0.5 — lower threshold improves completeness but may need IMU fusion to compensate for lower confidence keypoints.
 
 ### 7.2 Short-term (1–2 weeks)

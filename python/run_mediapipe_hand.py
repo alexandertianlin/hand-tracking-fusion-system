@@ -1,9 +1,9 @@
 """
-D435i + MediaPipe Hand to Unity UDP Bridge (v2.0)
+depth camera + MediaPipe Hand to Unity UDP Bridge (v2.0)
 
 Usage:
-    python src/d435i_mediapipe_hand_sender.py
-    python src/d435i_mediapipe_hand_sender.py --webcam 0
+    python src/depth_camera_mediapipe_hand_sender.py
+    python src/depth_camera_mediapipe_hand_sender.py --webcam 0
 """
 import json, math, os, socket, sys, time, urllib.request
 import cv2, numpy as np
@@ -93,7 +93,7 @@ def ensure_model():
         print("  Downloading model...", flush=True); urllib.request.urlretrieve(MURL, p)
     return p
 
-class D435IBackend:
+class DepthCameraBackend:
     def __init__(self): self.pipe = None
     def open(self):
         for attempt in range(2):
@@ -109,7 +109,7 @@ class D435IBackend:
                     if cf:
                         np.asanyarray(cf.get_data())
                         elapsed = time.monotonic()-t0
-                        print('  D435i OK ({:.1f}s)'.format(elapsed), flush=True)
+                        print('  depth camera OK ({:.1f}s)'.format(elapsed), flush=True)
                         return True
                     else:
                         print('  Attempt {}/{}: frame #{}, no color stream'.format(attempt+1, i+1), flush=True)
@@ -122,7 +122,7 @@ class D435IBackend:
             if attempt < 1:
                 print('  Waiting 1s before retry...', flush=True)
                 time.sleep(1)
-        print('  D435i FAILED after 2 attempts', flush=True)
+        print('  depth camera FAILED after 2 attempts', flush=True)
         return False
     def read(self):
         try:
@@ -165,16 +165,16 @@ def main():
         print("Mode: Webcam (ID={})".format(args.webcam))
         cam = WebcamBackend(args.webcam)
     elif rs is not None:
-        print("Mode: D435i")
-        cam = D435IBackend()
+        print("Mode: depth camera")
+        cam = DepthCameraBackend()
     else:
-        print("D435i n/a, trying webcam 0...")
+        print("depth camera n/a, trying webcam 0...")
         cam = WebcamBackend(0)
 
     print("Opening camera...", flush=True)
     if not cam.open():
         print("[FAIL] Camera open failed", flush=True)
-        print("  Check USB connection (D435i) or camera ID (--webcam N)", flush=True)
+        print("  Check USB connection (depth camera) or camera ID (--webcam N)", flush=True)
         sys.exit(1)
 
     mp_path = ensure_model()

@@ -85,15 +85,15 @@ print("Loading ViTPose ...", flush=True)
 vitpose = ViTPoseModel("cuda" if torch.cuda.is_available() else "cpu")
 print("ViTPose ready", flush=True)
 
-# D435i camera
-print("Opening D435i ...", flush=True)
+# depth camera camera
+print("Opening depth camera ...", flush=True)
 import pyrealsense2 as rs
 pipe = rs.pipeline()
 cfg_rs = rs.config()
 cfg_rs.enable_stream(rs.stream.color, 640, 480, rs.format.bgr8, 30)
 pipe.start(cfg_rs)
 for _ in range(30): pipe.wait_for_frames()
-print("D435i OK. Press q/ESC to quit.", flush=True)
+print("depth camera OK. Press q/ESC to quit.", flush=True)
 
 fc = 0; ft = time.time(); fps = 0
 vit_skip = 0; last_boxes = None; last_right = None; consecutive_no_hand = 0; hands_confirmed = True; last_kp2d = None; last_hand_center = None

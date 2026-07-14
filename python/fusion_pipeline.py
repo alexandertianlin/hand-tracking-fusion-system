@@ -1,8 +1,8 @@
 ﻿#!/usr/bin/env python3
 # ==============================================================================
-# fusion_pipeline.py ? IMU + Visual (D435i+HAMER) Fusion Pipeline
+# fusion_pipeline.py ? IMU + Visual (depth camera+HAMER) Fusion Pipeline
 #
-# Reads:  D435i camera -> ViTPose detection -> HAMER inference -> global_orient
+# Reads:  depth camera camera -> ViTPose detection -> HAMER inference -> global_orient
 # Reads:  STM32 IMU gloves (COM122, 460800 baud) -> quaternion
 # Fuses:  Complementary filter (Slerp with dynamic alpha)
 # Sends:  UDP JSON to:
@@ -329,7 +329,7 @@ def main():
     print(f"GPU: {torch.cuda.get_device_name(0)}")
     print(f"VRAM: {torch.cuda.get_device_properties(0).total_memory/1e9:.1f} GB")
     print(f"IMU: {COM_PORT} @ {COM_BAUD}")
-    print(f"Camera: D435i @ {CAM_WIDTH}x{CAM_HEIGHT} {CAM_FPS}fps")
+    print(f"Camera: depth camera @ {CAM_WIDTH}x{CAM_HEIGHT} {CAM_FPS}fps")
     print(f"UDP fusion: {UDP_IP}:{UDP_PORT_FUS}, vision: {UDP_IP}:{UDP_PORT_VIS}")
     print()
 
@@ -347,17 +347,17 @@ def main():
     vitpose = ViTPoseModel(dev)
     print("ViTPose ready")
 
-    # Open D435i
-    print("Opening D435i...")
+    # Open depth camera
+    print("Opening depth camera...")
     import pyrealsense2 as rs
     pipe, cfg_rs = rs.pipeline(), rs.config()
     cfg_rs.enable_stream(rs.stream.color, CAM_WIDTH, CAM_HEIGHT, rs.format.bgr8, CAM_FPS)
     try:
         pipe.start(cfg_rs)
         for _ in range(15): pipe.wait_for_frames()
-        print("D435i OK")
+        print("depth camera OK")
     except Exception as e:
-        print(f"D435i ERROR: {e}"); return
+        print(f"depth camera ERROR: {e}"); return
 
     # Start IMU reader thread
     imu_queue, stop_event = queue.Queue(), threading.Event()
