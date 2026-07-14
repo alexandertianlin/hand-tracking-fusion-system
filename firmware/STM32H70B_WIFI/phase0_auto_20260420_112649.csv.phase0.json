@@ -1,0 +1,232 @@
+{
+  "schema_version": "phase0-autodetect-1.0",
+  "csv_path": "phase0_auto_20260420_112649.csv",
+  "captured_seconds": 3.065,
+  "palm": {
+    "samples": 314,
+    "spread_deg": 0.0266
+  },
+  "fingers": [
+    {
+      "node": 20,
+      "uart": 2,
+      "label": "thumb",
+      "samples": 314,
+      "palm_spread_deg": 0.0266,
+      "tip_spread_deg": 0.0479,
+      "raw_residual_deg": 176.9533,
+      "mean_palm_quat": [
+        0.998721,
+        0.032397,
+        0.038813,
+        -0.000397
+      ],
+      "mean_tip_quat": [
+        0.007996,
+        -0.998319,
+        -0.057397,
+        0.0
+      ],
+      "best_permutation": {
+        "name": "perm[+X,-Y,-Z]",
+        "axes": {
+          "X": "+Xraw",
+          "Y": "-Yraw",
+          "Z": "-Zraw"
+        },
+        "axes_text": "X <- +Xraw, Y <- -Yraw, Z <- -Zraw",
+        "quaternion": [
+          0.0,
+          1.0,
+          0.0,
+          0.0
+        ],
+        "residual_deg": 8.3843,
+        "runner_up_name": "perm[+Y,+X,-Z]",
+        "runner_up_residual_deg": 83.5635,
+        "confidence_margin_deg": 75.1792
+      },
+      "free_form_mount": {
+        "quaternion": [
+          0.026584,
+          -0.997324,
+          -0.057238,
+          0.036891
+        ],
+        "residual_deg": 0.0
+      },
+      "verdict": "POOR",
+      "verdict_reason": "no permutation fits within 5 deg; the boards were probably not co-aligned during capture",
+      "fix": {
+        "fingertip_firmware_raw_axis_remap": "X <- +Xraw, Y <- -Yraw, Z <- -Zraw",
+        "palm_fallback_imu_config_block": "/* thumb (node 20) - permutation residual: 8.38 deg */\n#define PALM_EXTERNAL_NODE_UART2_REMAP_W +0.000000f\n#define PALM_EXTERNAL_NODE_UART2_REMAP_X +1.000000f\n#define PALM_EXTERNAL_NODE_UART2_REMAP_Y +0.000000f\n#define PALM_EXTERNAL_NODE_UART2_REMAP_Z +0.000000f\n#define PALM_EXTERNAL_NODE_UART2_REMAP_ORDER PALM_EXTERNAL_NODE_REMAP_LEFT_MULTIPLY"
+      }
+    },
+    {
+      "node": 30,
+      "uart": 3,
+      "label": "index",
+      "samples": 313,
+      "palm_spread_deg": 0.0266,
+      "tip_spread_deg": 0.3989,
+      "raw_residual_deg": 61.9934,
+      "mean_palm_quat": [
+        0.998721,
+        0.032397,
+        0.038813,
+        -0.000397
+      ],
+      "mean_tip_quat": [
+        0.85961,
+        -0.028698,
+        -0.004686,
+        0.510122
+      ],
+      "best_permutation": {
+        "name": "perm[+Y,-X,+Z]",
+        "axes": {
+          "X": "+Yraw",
+          "Y": "-Xraw",
+          "Z": "+Zraw"
+        },
+        "axes_text": "X <- +Yraw, Y <- -Xraw, Z <- +Zraw",
+        "quaternion": [
+          0.707107,
+          0.0,
+          0.0,
+          -0.707107
+        ],
+        "residual_deg": 29.3851,
+        "runner_up_name": "identity",
+        "runner_up_residual_deg": 61.9934,
+        "confidence_margin_deg": 32.6083
+      },
+      "free_form_mount": {
+        "quaternion": [
+          0.857197,
+          0.036712,
+          0.054559,
+          -0.510773
+        ],
+        "residual_deg": 0.0
+      },
+      "verdict": "POOR",
+      "verdict_reason": "no permutation fits within 5 deg; the boards were probably not co-aligned during capture",
+      "fix": {
+        "fingertip_firmware_raw_axis_remap": "X <- +Yraw, Y <- -Xraw, Z <- +Zraw",
+        "palm_fallback_imu_config_block": "/* index (node 30) - permutation residual: 29.39 deg */\n#define PALM_EXTERNAL_NODE_UART3_REMAP_W +0.707107f\n#define PALM_EXTERNAL_NODE_UART3_REMAP_X +0.000000f\n#define PALM_EXTERNAL_NODE_UART3_REMAP_Y +0.000000f\n#define PALM_EXTERNAL_NODE_UART3_REMAP_Z -0.707107f\n#define PALM_EXTERNAL_NODE_UART3_REMAP_ORDER PALM_EXTERNAL_NODE_REMAP_LEFT_MULTIPLY"
+      }
+    },
+    {
+      "node": 40,
+      "uart": 4,
+      "label": "middle",
+      "samples": 313,
+      "palm_spread_deg": 0.0265,
+      "tip_spread_deg": 0.2092,
+      "raw_residual_deg": 49.1352,
+      "mean_palm_quat": [
+        0.998721,
+        0.032397,
+        0.038813,
+        -0.000397
+      ],
+      "mean_tip_quat": [
+        0.910183,
+        -0.012326,
+        0.017712,
+        -0.413644
+      ],
+      "best_permutation": {
+        "name": "perm[-Y,+X,+Z]",
+        "axes": {
+          "X": "-Yraw",
+          "Y": "+Xraw",
+          "Z": "+Zraw"
+        },
+        "axes_text": "X <- -Yraw, Y <- +Xraw, Z <- +Zraw",
+        "quaternion": [
+          0.707107,
+          0.0,
+          0.0,
+          0.707107
+        ],
+        "residual_deg": 41.7982,
+        "runner_up_name": "identity",
+        "runner_up_residual_deg": 49.1352,
+        "confidence_margin_deg": 7.337
+      },
+      "free_form_mount": {
+        "quaternion": [
+          0.909471,
+          0.057846,
+          0.004232,
+          0.411701
+        ],
+        "residual_deg": 0.0
+      },
+      "verdict": "POOR",
+      "verdict_reason": "no permutation fits within 5 deg; the boards were probably not co-aligned during capture",
+      "fix": {
+        "fingertip_firmware_raw_axis_remap": "X <- -Yraw, Y <- +Xraw, Z <- +Zraw",
+        "palm_fallback_imu_config_block": "/* middle (node 40) - permutation residual: 41.80 deg */\n#define PALM_EXTERNAL_NODE_UART4_REMAP_W +0.707107f\n#define PALM_EXTERNAL_NODE_UART4_REMAP_X +0.000000f\n#define PALM_EXTERNAL_NODE_UART4_REMAP_Y +0.000000f\n#define PALM_EXTERNAL_NODE_UART4_REMAP_Z +0.707107f\n#define PALM_EXTERNAL_NODE_UART4_REMAP_ORDER PALM_EXTERNAL_NODE_REMAP_LEFT_MULTIPLY"
+      }
+    },
+    {
+      "node": 50,
+      "uart": 5,
+      "label": "ring",
+      "samples": 311,
+      "palm_spread_deg": 0.0266,
+      "tip_spread_deg": 0.6451,
+      "raw_residual_deg": 149.9354,
+      "mean_palm_quat": [
+        0.998721,
+        0.032397,
+        0.038813,
+        -0.000396
+      ],
+      "mean_tip_quat": [
+        0.25884,
+        0.013062,
+        0.001247,
+        -0.965831
+      ],
+      "best_permutation": {
+        "name": "perm[-X,-Y,+Z]",
+        "axes": {
+          "X": "-Xraw",
+          "Y": "-Yraw",
+          "Z": "+Zraw"
+        },
+        "axes_text": "X <- -Xraw, Y <- -Yraw, Z <- +Zraw",
+        "quaternion": [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ],
+        "residual_deg": 30.4248,
+        "runner_up_name": "perm[-Y,+X,+Z]",
+        "runner_up_residual_deg": 60.0682,
+        "confidence_margin_deg": 29.6434
+      },
+      "free_form_mount": {
+        "quaternion": [
+          0.259364,
+          0.032827,
+          -0.022484,
+          0.96496
+        ],
+        "residual_deg": 0.0
+      },
+      "verdict": "POOR",
+      "verdict_reason": "capture was not still (palm spread 0.03 deg, tip spread 0.65 deg); recapture with nothing moving",
+      "fix": {
+        "fingertip_firmware_raw_axis_remap": "X <- -Xraw, Y <- -Yraw, Z <- +Zraw",
+        "palm_fallback_imu_config_block": "/* ring (node 50) - permutation residual: 30.42 deg */\n#define PALM_EXTERNAL_NODE_UART5_REMAP_W +0.000000f\n#define PALM_EXTERNAL_NODE_UART5_REMAP_X +0.000000f\n#define PALM_EXTERNAL_NODE_UART5_REMAP_Y +0.000000f\n#define PALM_EXTERNAL_NODE_UART5_REMAP_Z +1.000000f\n#define PALM_EXTERNAL_NODE_UART5_REMAP_ORDER PALM_EXTERNAL_NODE_REMAP_LEFT_MULTIPLY"
+      }
+    }
+  ],
+  "summary_text": "thumb POOR (perm[+X,-Y,-Z], residual 8.38 deg), index POOR (perm[+Y,-X,+Z], residual 29.39 deg), middle POOR (perm[-Y,+X,+Z], residual 41.80 deg), ring POOR (perm[-X,-Y,+Z], residual 30.42 deg)"
+}

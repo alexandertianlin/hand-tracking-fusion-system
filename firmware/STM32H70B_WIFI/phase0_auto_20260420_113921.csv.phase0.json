@@ -1,0 +1,67 @@
+{
+  "schema_version": "phase0-autodetect-1.0",
+  "csv_path": "phase0_auto_20260420_113921.csv",
+  "captured_seconds": 2.915,
+  "palm": {
+    "samples": 306,
+    "spread_deg": 0.1296
+  },
+  "fingers": [
+    {
+      "node": 20,
+      "uart": 2,
+      "label": "thumb",
+      "samples": 306,
+      "palm_spread_deg": 0.129,
+      "tip_spread_deg": 0.1621,
+      "raw_residual_deg": 179.1391,
+      "mean_palm_quat": [
+        0.99847,
+        0.019925,
+        0.051167,
+        -0.006499
+      ],
+      "mean_tip_quat": [
+        0.036318,
+        -0.851065,
+        -0.523796,
+        0.002621
+      ],
+      "best_permutation": {
+        "name": "perm[+Y,+X,-Z]",
+        "axes": {
+          "X": "+Yraw",
+          "Y": "+Xraw",
+          "Z": "-Zraw"
+        },
+        "axes_text": "X <- +Yraw, Y <- +Xraw, Z <- -Zraw",
+        "quaternion": [
+          0.0,
+          0.707107,
+          0.707107,
+          0.0
+        ],
+        "residual_deg": 27.6883,
+        "runner_up_name": "perm[+X,-Y,-Z]",
+        "runner_up_residual_deg": 62.7546,
+        "confidence_margin_deg": 35.0663
+      },
+      "free_form_mount": {
+        "quaternion": [
+          0.007513,
+          -0.853757,
+          -0.519374,
+          0.035964
+        ],
+        "residual_deg": 0.0
+      },
+      "verdict": "POOR",
+      "verdict_reason": "no permutation fits within 5 deg; the boards were probably not co-aligned during capture",
+      "fix": {
+        "fingertip_firmware_raw_axis_remap": "X <- +Yraw, Y <- +Xraw, Z <- -Zraw",
+        "palm_fallback_imu_config_block": "/* thumb (node 20) - permutation residual: 27.69 deg */\n#define PALM_EXTERNAL_NODE_UART2_REMAP_W +0.000000f\n#define PALM_EXTERNAL_NODE_UART2_REMAP_X +0.707107f\n#define PALM_EXTERNAL_NODE_UART2_REMAP_Y +0.707107f\n#define PALM_EXTERNAL_NODE_UART2_REMAP_Z +0.000000f\n#define PALM_EXTERNAL_NODE_UART2_REMAP_ORDER PALM_EXTERNAL_NODE_REMAP_LEFT_MULTIPLY"
+      }
+    }
+  ],
+  "summary_text": "thumb POOR (perm[+Y,+X,-Z], residual 27.69 deg)"
+}

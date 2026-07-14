@@ -1,0 +1,6 @@
+STM32 USB CDC Drift Capture Summary
+
+capture middle (40): yaw drifts +1.32 deg/10s over 3.1s; yaw +1.32, pitch +0.03, roll +0.22 deg/10s; both imus valid throughout. Stable axes: pitch, roll.
+
+Tuning Hint
+Yaw is drifting more than pitch/roll. In this 6DOF path some yaw walk is normal; try a small increase in `PALM_MAHONY_KI` first to improve gyro bias trim. `PALM_MAHONY_KP` will mainly affect tilt correction, not long-term heading lock.

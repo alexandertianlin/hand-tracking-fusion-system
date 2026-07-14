@@ -1,0 +1,67 @@
+{
+  "schema_version": "phase0-autodetect-1.0",
+  "csv_path": "phase0_auto_20260420_113620.csv",
+  "captured_seconds": 2.935,
+  "palm": {
+    "samples": 306,
+    "spread_deg": 0.1257
+  },
+  "fingers": [
+    {
+      "node": 30,
+      "uart": 3,
+      "label": "index",
+      "samples": 306,
+      "palm_spread_deg": 0.1263,
+      "tip_spread_deg": 0.3417,
+      "raw_residual_deg": 33.7888,
+      "mean_palm_quat": [
+        0.995211,
+        0.020846,
+        0.019665,
+        -0.093459
+      ],
+      "mean_tip_quat": [
+        0.925272,
+        0.011418,
+        0.019042,
+        -0.378653
+      ],
+      "best_permutation": {
+        "name": "identity",
+        "axes": {
+          "X": "+Xraw",
+          "Y": "+Yraw",
+          "Z": "+Zraw"
+        },
+        "axes_text": "X <- +Xraw, Y <- +Yraw, Z <- +Zraw",
+        "quaternion": [
+          1.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        "residual_deg": 33.7888,
+        "runner_up_name": "perm[-Y,+X,+Z]",
+        "runner_up_residual_deg": 56.2829,
+        "confidence_margin_deg": 22.4941
+      },
+      "free_form_mount": {
+        "quaternion": [
+          0.956842,
+          0.013592,
+          -0.007582,
+          0.290192
+        ],
+        "residual_deg": 0.0
+      },
+      "verdict": "POOR",
+      "verdict_reason": "no permutation fits within 5 deg; the boards were probably not co-aligned during capture",
+      "fix": {
+        "fingertip_firmware_raw_axis_remap": "X <- +Xraw, Y <- +Yraw, Z <- +Zraw",
+        "palm_fallback_imu_config_block": "/* index (node 30) - permutation residual: 33.79 deg */\n#define PALM_EXTERNAL_NODE_UART3_REMAP_W +1.000000f\n#define PALM_EXTERNAL_NODE_UART3_REMAP_X +0.000000f\n#define PALM_EXTERNAL_NODE_UART3_REMAP_Y +0.000000f\n#define PALM_EXTERNAL_NODE_UART3_REMAP_Z +0.000000f\n#define PALM_EXTERNAL_NODE_UART3_REMAP_ORDER PALM_EXTERNAL_NODE_REMAP_LEFT_MULTIPLY"
+      }
+    }
+  ],
+  "summary_text": "index POOR (identity, residual 33.79 deg)"
+}

@@ -1,0 +1,67 @@
+{
+  "schema_version": "phase0-autodetect-1.0",
+  "csv_path": "phase0_auto_20260420_113823.csv",
+  "captured_seconds": 3.001,
+  "palm": {
+    "samples": 307,
+    "spread_deg": 0.0416
+  },
+  "fingers": [
+    {
+      "node": 50,
+      "uart": 5,
+      "label": "ring",
+      "samples": 305,
+      "palm_spread_deg": 0.0417,
+      "tip_spread_deg": 0.0572,
+      "raw_residual_deg": 170.6757,
+      "mean_palm_quat": [
+        0.999897,
+        0.009808,
+        0.010419,
+        0.000996
+      ],
+      "mean_tip_quat": [
+        0.080149,
+        -0.007,
+        0.020648,
+        0.996544
+      ],
+      "best_permutation": {
+        "name": "perm[-X,-Y,+Z]",
+        "axes": {
+          "X": "-Xraw",
+          "Y": "-Yraw",
+          "Z": "+Zraw"
+        },
+        "axes_text": "X <- -Xraw, Y <- -Yraw, Z <- +Zraw",
+        "quaternion": [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ],
+        "residual_deg": 9.3998,
+        "runner_up_name": "perm[+Y,-X,+Z]",
+        "runner_up_residual_deg": 80.6824,
+        "confidence_margin_deg": 71.2826
+      },
+      "free_form_mount": {
+        "quaternion": [
+          0.08128,
+          -0.002576,
+          -0.01003,
+          -0.996638
+        ],
+        "residual_deg": 0.0
+      },
+      "verdict": "POOR",
+      "verdict_reason": "no permutation fits within 5 deg; the boards were probably not co-aligned during capture",
+      "fix": {
+        "fingertip_firmware_raw_axis_remap": "X <- -Xraw, Y <- -Yraw, Z <- +Zraw",
+        "palm_fallback_imu_config_block": "/* ring (node 50) - permutation residual: 9.40 deg */\n#define PALM_EXTERNAL_NODE_UART5_REMAP_W +0.000000f\n#define PALM_EXTERNAL_NODE_UART5_REMAP_X +0.000000f\n#define PALM_EXTERNAL_NODE_UART5_REMAP_Y +0.000000f\n#define PALM_EXTERNAL_NODE_UART5_REMAP_Z +1.000000f\n#define PALM_EXTERNAL_NODE_UART5_REMAP_ORDER PALM_EXTERNAL_NODE_REMAP_LEFT_MULTIPLY"
+      }
+    }
+  ],
+  "summary_text": "ring POOR (perm[-X,-Y,+Z], residual 9.40 deg)"
+}

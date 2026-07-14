@@ -1,0 +1,63 @@
+# === Private research data (DO NOT push to GitHub) ===
+data/samples/
+data/calibration/
+data/annotations/
+
+# === Large model weights (download separately) ===
+hamer_source/_DATA/
+models/*.ckpt
+models/*.pth
+models/*.pkl
+models/*.onnx
+models/*.onnx.data
+**/_DATA/
+
+# === Unity build artifacts ===
+unity/Library/
+unity/Temp/
+unity/Build/
+unity/Obj/
+unity/*.csproj
+unity/*.unityproj
+unity/*.sln
+unity/*.suo
+unity/*.user
+unity/*.pidb
+unity/*.booproj
+
+# === Python ===
+__pycache__/
+*.pyc
+*.pyo
+*.egg-info/
+.venv/
+venv/
+*.egg
+
+# === OS files ===
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# === IDE ===
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# === Logs ===
+*.log
+logs/
+
+# === MANO model files (copyright) ===
+**/MANO_*.pkl
+
+# === Large files ===
+*.mp4
+*.avi
+*.mov
+*.bag  # RealSense bag files
+
+# === Codex Brain / WorkBuddy ===
+.codex/
+.workbuddy/

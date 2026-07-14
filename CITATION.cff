@@ -1,0 +1,21 @@
+cff-version: 1.2.0
+message: "If you use this software, please cite it as below."
+type: software
+title: "Hand Tracking Fusion System"
+authors:
+  - given-names: Alexander
+    family-names: Tianlin
+version: 1.0.0
+date-released: 2026-07-14
+repository-code: https://github.com/alexandertianlin/hand-tracking-fusion-system
+license: MIT
+abstract: "Real-time multi-modal 3D hand pose estimation fusing Intel D435i camera (HaMeR/ViTPose) with wearable IMU+tactile glove for drift-free, occlusion-robust tracking with per-finger granularity."
+keywords:
+  - hand-tracking
+  - multi-modal-fusion
+  - IMU
+  - tactile-glove
+  - HaMeR
+  - ViTPose
+  - MANO
+  - Unity

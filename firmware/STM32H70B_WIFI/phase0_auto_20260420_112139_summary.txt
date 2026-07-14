@@ -1,0 +1,6 @@
+STM32 USB CDC Drift Capture Summary
+
+capture middle (40): roll drifts -6.47 deg/10s over 3.0s; yaw +3.06, pitch -1.13, roll -6.47 deg/10s; both imus valid throughout.
+
+Tuning Hint
+Pitch/roll are drifting while still. Try a modest increase in `PALM_MAHONY_KP`, then a smaller increase in `PALM_MAHONY_KI` if bias remains. If motion causes noisy correction, back `PALM_MAHONY_KP` down.

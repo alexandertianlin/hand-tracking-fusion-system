@@ -1,0 +1,67 @@
+{
+  "schema_version": "phase0-autodetect-1.0",
+  "csv_path": "phase0_auto_20260420_113729.csv",
+  "captured_seconds": 2.883,
+  "palm": {
+    "samples": 299,
+    "spread_deg": 0.0678
+  },
+  "fingers": [
+    {
+      "node": 40,
+      "uart": 4,
+      "label": "middle",
+      "samples": 298,
+      "palm_spread_deg": 0.0678,
+      "tip_spread_deg": 0.3282,
+      "raw_residual_deg": 66.7884,
+      "mean_palm_quat": [
+        0.999089,
+        0.016186,
+        0.035481,
+        0.017336
+      ],
+      "mean_tip_quat": [
+        0.844158,
+        0.00368,
+        0.020912,
+        -0.535674
+      ],
+      "best_permutation": {
+        "name": "perm[-Y,+X,+Z]",
+        "axes": {
+          "X": "-Yraw",
+          "Y": "+Xraw",
+          "Z": "+Zraw"
+        },
+        "axes_text": "X <- -Yraw, Y <- +Xraw, Z <- +Zraw",
+        "quaternion": [
+          0.707107,
+          0.0,
+          0.0,
+          0.707107
+        ],
+        "residual_deg": 23.5251,
+        "runner_up_name": "identity",
+        "runner_up_residual_deg": 66.7884,
+        "confidence_margin_deg": 43.2633
+      },
+      "free_form_mount": {
+        "quaternion": [
+          0.834904,
+          0.029355,
+          0.000324,
+          0.549613
+        ],
+        "residual_deg": 0.0
+      },
+      "verdict": "POOR",
+      "verdict_reason": "no permutation fits within 5 deg; the boards were probably not co-aligned during capture",
+      "fix": {
+        "fingertip_firmware_raw_axis_remap": "X <- -Yraw, Y <- +Xraw, Z <- +Zraw",
+        "palm_fallback_imu_config_block": "/* middle (node 40) - permutation residual: 23.53 deg */\n#define PALM_EXTERNAL_NODE_UART4_REMAP_W +0.707107f\n#define PALM_EXTERNAL_NODE_UART4_REMAP_X +0.000000f\n#define PALM_EXTERNAL_NODE_UART4_REMAP_Y +0.000000f\n#define PALM_EXTERNAL_NODE_UART4_REMAP_Z +0.707107f\n#define PALM_EXTERNAL_NODE_UART4_REMAP_ORDER PALM_EXTERNAL_NODE_REMAP_LEFT_MULTIPLY"
+      }
+    }
+  ],
+  "summary_text": "middle POOR (perm[-Y,+X,+Z], residual 23.53 deg)"
+}

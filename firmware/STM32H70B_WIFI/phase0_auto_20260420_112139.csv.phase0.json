@@ -1,0 +1,177 @@
+{
+  "schema_version": "phase0-autodetect-1.0",
+  "csv_path": "C:\\Users\\ooiky\\Documents\\Github\\Agilereach_STM32H70B_WIFI_6IT\\phase0_auto_20260420_112139.csv",
+  "captured_seconds": 2.952,
+  "palm": {
+    "samples": 303,
+    "spread_deg": 0.0746
+  },
+  "fingers": [
+    {
+      "node": 30,
+      "uart": 3,
+      "label": "index",
+      "samples": 302,
+      "palm_spread_deg": 0.0746,
+      "tip_spread_deg": 6.6637,
+      "raw_residual_deg": 175.3172,
+      "mean_palm_quat": [
+        0.011461,
+        -0.85018,
+        0.526368,
+        0.000101
+      ],
+      "mean_tip_quat": [
+        0.866487,
+        -0.029724,
+        0.010643,
+        0.498201
+      ],
+      "best_permutation": {
+        "name": "perm[+X,-Y,-Z]",
+        "axes": {
+          "X": "+Xraw",
+          "Y": "-Yraw",
+          "Z": "-Zraw"
+        },
+        "axes_text": "X <- +Xraw, Y <- -Yraw, Z <- -Zraw",
+        "quaternion": [
+          0.0,
+          1.0,
+          0.0,
+          0.0
+        ],
+        "residual_deg": 6.1406,
+        "runner_up_name": "perm[+X,+Z,-Y]",
+        "runner_up_residual_deg": 85.389,
+        "confidence_margin_deg": 79.2484
+      },
+      "free_form_mount": {
+        "quaternion": [
+          0.040854,
+          -0.998565,
+          0.032411,
+          -0.01222
+        ],
+        "residual_deg": 0.0
+      },
+      "verdict": "POOR",
+      "verdict_reason": "capture was not still (palm spread 0.07 deg, tip spread 6.66 deg); recapture with nothing moving",
+      "fix": {
+        "fingertip_firmware_raw_axis_remap": "X <- +Xraw, Y <- -Yraw, Z <- -Zraw",
+        "palm_fallback_imu_config_block": "/* index (node 30) - permutation residual: 6.14 deg */\n#define PALM_EXTERNAL_NODE_UART3_REMAP_W +0.000000f\n#define PALM_EXTERNAL_NODE_UART3_REMAP_X +1.000000f\n#define PALM_EXTERNAL_NODE_UART3_REMAP_Y +0.000000f\n#define PALM_EXTERNAL_NODE_UART3_REMAP_Z +0.000000f\n#define PALM_EXTERNAL_NODE_UART3_REMAP_ORDER PALM_EXTERNAL_NODE_REMAP_LEFT_MULTIPLY"
+      }
+    },
+    {
+      "node": 40,
+      "uart": 4,
+      "label": "middle",
+      "samples": 302,
+      "palm_spread_deg": 0.0746,
+      "tip_spread_deg": 1.64,
+      "raw_residual_deg": 178.0326,
+      "mean_palm_quat": [
+        0.011462,
+        -0.85018,
+        0.526368,
+        0.000101
+      ],
+      "mean_tip_quat": [
+        0.983824,
+        0.042042,
+        0.013901,
+        -0.173579
+      ],
+      "best_permutation": {
+        "name": "perm[-Y,-X,-Z]",
+        "axes": {
+          "X": "-Yraw",
+          "Y": "-Xraw",
+          "Z": "-Zraw"
+        },
+        "axes_text": "X <- -Yraw, Y <- -Xraw, Z <- -Zraw",
+        "quaternion": [
+          0.0,
+          0.707107,
+          -0.707107,
+          0.0
+        ],
+        "residual_deg": 7.9585,
+        "runner_up_name": "perm[+X,-Y,-Z]",
+        "runner_up_residual_deg": 83.5887,
+        "confidence_margin_deg": 75.6302
+      },
+      "free_form_mount": {
+        "quaternion": [
+          0.017168,
+          0.745542,
+          -0.665263,
+          -0.036037
+        ],
+        "residual_deg": 0.0
+      },
+      "verdict": "POOR",
+      "verdict_reason": "capture was not still (palm spread 0.07 deg, tip spread 1.64 deg); recapture with nothing moving",
+      "fix": {
+        "fingertip_firmware_raw_axis_remap": "X <- -Yraw, Y <- -Xraw, Z <- -Zraw",
+        "palm_fallback_imu_config_block": "/* middle (node 40) - permutation residual: 7.96 deg */\n#define PALM_EXTERNAL_NODE_UART4_REMAP_W +0.000000f\n#define PALM_EXTERNAL_NODE_UART4_REMAP_X +0.707107f\n#define PALM_EXTERNAL_NODE_UART4_REMAP_Y -0.707107f\n#define PALM_EXTERNAL_NODE_UART4_REMAP_Z +0.000000f\n#define PALM_EXTERNAL_NODE_UART4_REMAP_ORDER PALM_EXTERNAL_NODE_REMAP_LEFT_MULTIPLY"
+      }
+    },
+    {
+      "node": 50,
+      "uart": 5,
+      "label": "ring",
+      "samples": 301,
+      "palm_spread_deg": 0.0746,
+      "tip_spread_deg": 3.3463,
+      "raw_residual_deg": 173.4459,
+      "mean_palm_quat": [
+        0.011462,
+        -0.85018,
+        0.526368,
+        0.000101
+      ],
+      "mean_tip_quat": [
+        0.786531,
+        -0.03462,
+        0.035439,
+        0.61556
+      ],
+      "best_permutation": {
+        "name": "perm[+X,-Y,-Z]",
+        "axes": {
+          "X": "+Xraw",
+          "Y": "-Yraw",
+          "Z": "-Zraw"
+        },
+        "axes_text": "X <- +Xraw, Y <- -Yraw, Z <- -Zraw",
+        "quaternion": [
+          0.0,
+          1.0,
+          0.0,
+          0.0
+        ],
+        "residual_deg": 14.2263,
+        "runner_up_name": "perm[+Y,+X,-Z]",
+        "runner_up_residual_deg": 77.6145,
+        "confidence_margin_deg": 63.3882
+      },
+      "free_form_mount": {
+        "quaternion": [
+          0.057164,
+          -0.992304,
+          -0.109735,
+          0.004931
+        ],
+        "residual_deg": 0.0
+      },
+      "verdict": "POOR",
+      "verdict_reason": "capture was not still (palm spread 0.07 deg, tip spread 3.35 deg); recapture with nothing moving",
+      "fix": {
+        "fingertip_firmware_raw_axis_remap": "X <- +Xraw, Y <- -Yraw, Z <- -Zraw",
+        "palm_fallback_imu_config_block": "/* ring (node 50) - permutation residual: 14.23 deg */\n#define PALM_EXTERNAL_NODE_UART5_REMAP_W +0.000000f\n#define PALM_EXTERNAL_NODE_UART5_REMAP_X +1.000000f\n#define PALM_EXTERNAL_NODE_UART5_REMAP_Y +0.000000f\n#define PALM_EXTERNAL_NODE_UART5_REMAP_Z +0.000000f\n#define PALM_EXTERNAL_NODE_UART5_REMAP_ORDER PALM_EXTERNAL_NODE_REMAP_LEFT_MULTIPLY"
+      }
+    }
+  ],
+  "summary_text": "index POOR (perm[+X,-Y,-Z], residual 6.14 deg), middle POOR (perm[-Y,-X,-Z], residual 7.96 deg), ring POOR (perm[+X,-Y,-Z], residual 14.23 deg)"
+}

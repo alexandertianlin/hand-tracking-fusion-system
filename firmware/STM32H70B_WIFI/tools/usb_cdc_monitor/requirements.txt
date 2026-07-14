@@ -1,0 +1,3 @@
+pyserial>=3.5
+# Optional for embedded live plots:
+matplotlib>=3.8

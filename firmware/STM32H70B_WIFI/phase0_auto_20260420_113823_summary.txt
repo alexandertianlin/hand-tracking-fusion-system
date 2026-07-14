@@ -1,0 +1,6 @@
+STM32 USB CDC Drift Capture Summary
+
+capture palm-local (0): pitch drifts +0.19 deg/10s over 3.0s; yaw +0.12, pitch +0.19, roll -0.04 deg/10s; both imus valid throughout. Stable axes: yaw, roll.
+
+Tuning Hint
+Current drift is modest. Keep `PALM_MAHONY_KP` near its present value and only fine-tune `PALM_MAHONY_KI` in small steps if you still want less slow bias walk.
